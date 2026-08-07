@@ -1,0 +1,15 @@
+{
+  "name": "Vertex Solutions | Tax & Business Advisory",
+  "short_name": "Vertex Solutions",
+  "description": "Chartered Accountant-led tax advisory and business consulting firm in Jaipur.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b0d",
+  "theme_color": "#0a0b0d",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
