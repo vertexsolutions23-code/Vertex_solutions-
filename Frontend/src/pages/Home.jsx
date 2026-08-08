@@ -71,20 +71,7 @@ export default function Home() {
         <div className="container">
           <div className="about-grid">
             <Reveal as="div" className="about-visual">
-              <FounderAvatar
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "inherit",
-                  zIndex: 0,
-                }}
-              />
+              <FounderAvatar className="about-img" />
               <div className="quote">
                 <p>&ldquo;Every filing deadline met, every scheme explored — that is the standard we hold ourselves to.&rdquo;</p>
                 <div className="who">CA Abhishek Agarwal, Founder</div>

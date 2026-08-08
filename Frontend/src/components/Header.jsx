@@ -24,53 +24,83 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const close = () => setMobileOpen(false);
+
   return (
-    <header id="site-header" className={scrolled ? "scrolled" : ""}>
-      <div className="container">
-        <Link to="/" className="logo" onClick={() => setMobileOpen(false)}>
-          <span className="logo-mark"><img src="/favicon.svg" alt="Vertex Solutions logo" /></span>
-          <span className="logo-text">
-            <span className="name">Vertex Solutions</span><br />
-            <span className="tag">Tax &amp; Business Advisory</span>
-          </span>
-        </Link>
+    <>
+      <header id="site-header" className={scrolled ? "scrolled" : ""}>
+        <div className="container">
+          <Link to="/" className="logo" onClick={close}>
+            <span className="logo-mark"><img src="/favicon.svg" alt="Vertex Solutions logo" /></span>
+            <span className="logo-text">
+              <span className="name">Vertex Solutions</span><br />
+              <span className="tag">Tax &amp; Business Advisory</span>
+            </span>
+          </Link>
 
-        <nav
-          className="main-nav"
-          style={
-            mobileOpen
-              ? { display: "flex", position: "fixed", inset: 0, top: 70, background: "rgba(10,11,13,0.98)", flexDirection: "column", alignItems: "flex-start", padding: 30, zIndex: 999, overflowY: "auto" }
-              : undefined
-          }
-        >
-          <ul style={mobileOpen ? { flexDirection: "column", alignItems: "flex-start", gap: 4, width: "100%" } : undefined}>
-            <li><NavLink to="/about" onClick={() => setMobileOpen(false)}>About</NavLink></li>
-            <li className="has-mega">
-              <NavLink to="/services" onClick={() => setMobileOpen(false)}>Services ▾</NavLink>
-              <div className="mega" style={mobileOpen ? { position: "static", opacity: 1, visibility: "visible", transform: "none", width: "100%", marginTop: 6, gridTemplateColumns: "1fr" } : undefined}>
-                {MEGA_ITEMS.map(([href, title, desc]) => (
-                  <Link key={href} to={href} onClick={() => setMobileOpen(false)}>
-                    <span className="t">{title}</span>
-                    <span className="d">{desc}</span>
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <li><NavLink to="/government-subsidy" onClick={() => setMobileOpen(false)}>Subsidy</NavLink></li>
-            <li><NavLink to="/blogs" onClick={() => setMobileOpen(false)}>Blogs</NavLink></li>
-            <li><NavLink to="/faqs" onClick={() => setMobileOpen(false)}>FAQs</NavLink></li>
-            <li><NavLink to="/contact" onClick={() => setMobileOpen(false)}>Contact</NavLink></li>
-          </ul>
-        </nav>
+          <nav className="main-nav">
+            <ul>
+              <li><NavLink to="/about">About</NavLink></li>
+              <li className="has-mega">
+                <NavLink to="/services">Services ▾</NavLink>
+                <div className="mega">
+                  {MEGA_ITEMS.map(([href, title, desc]) => (
+                    <Link key={href} to={href}>
+                      <span className="t">{title}</span>
+                      <span className="d">{desc}</span>
+                    </Link>
+                  ))}
+                </div>
+              </li>
+              <li><NavLink to="/government-subsidy">Subsidy</NavLink></li>
+              <li><NavLink to="/blogs">Blogs</NavLink></li>
+              <li><NavLink to="/faqs">FAQs</NavLink></li>
+              <li><NavLink to="/contact">Contact</NavLink></li>
+            </ul>
+          </nav>
 
-        <div className="cta-group">
-          <a className="btn btn-ghost" href={PHONE_TEL}>Call Now</a>
-          <a className="btn btn-gold" href={GOOGLE_FORM_URL}>Free Consultation</a>
-          <button className="hamb" aria-label="Menu" onClick={() => setMobileOpen(o => !o)}>
-            <span></span>
-          </button>
+          <div className="cta-group">
+            <a className="btn btn-ghost" href={PHONE_TEL}>Call Now</a>
+            <a className="btn btn-gold" href={GOOGLE_FORM_URL}>Free Consultation</a>
+            <button className={`hamb${mobileOpen ? " open" : ""}`} aria-label="Menu" onClick={() => setMobileOpen(o => !o)}>
+              <span></span>
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {mobileOpen && (
+        <div className="mobile-menu">
+          <ul>
+            <li><NavLink to="/about" onClick={close}>About</NavLink></li>
+            <li className="m-sub">
+              <span>Services</span>
+              <ul>
+                {MEGA_ITEMS.map(([href, title, desc]) => (
+                  <li key={href}>
+                    <Link to={href} onClick={close}>
+                      <span className="t">{title}</span>
+                      <span className="d">{desc}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li><NavLink to="/government-subsidy" onClick={close}>Subsidy</NavLink></li>
+            <li><NavLink to="/blogs" onClick={close}>Blogs</NavLink></li>
+            <li><NavLink to="/faqs" onClick={close}>FAQs</NavLink></li>
+            <li><NavLink to="/contact" onClick={close}>Contact</NavLink></li>
+          </ul>
+          <div className="mobile-menu-cta">
+            <a className="btn btn-gold" href={GOOGLE_FORM_URL}>Free Consultation</a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
