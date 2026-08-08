@@ -53,6 +53,42 @@ function getAdminAddress() {
   return process.env.ADMIN_EMAIL || getFromAddress();
 }
 
+// Brevo REST API — HTTPS, works from any network (SMTP relay can be blocked
+// from datacenter IPs, e.g. Render). Used when BREVO_API_KEY is set.
+async function sendViaBrevoApi({ to, replyTo, subject, text }) {
+  const key = process.env.BREVO_API_KEY;
+  const from = process.env.BREVO_FROM || process.env.ADMIN_EMAIL || process.env.SMTP_USER;
+
+  if (!key) {
+    throw new Error("BREVO_API_KEY is not set");
+  }
+  if (!from) {
+    throw new Error("BREVO_FROM is not set (use a verified sender in Brevo)");
+  }
+
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": key,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      sender: { email: from },
+      to: [{ email: to }],
+      replyTo: { email: replyTo },
+      subject,
+      textContent: text,
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`Brevo API error ${res.status}: ${body.slice(0, 300)}`);
+  }
+}
+
 export function sendConsultationEmail(payload) {
   const subject = "New Free Consultation Request | Vertex Solutions";
   const submittedAt = new Date().toLocaleString("en-IN", {
@@ -75,6 +111,15 @@ export function sendConsultationEmail(payload) {
     "",
     "----------------------------------------",
   ].join("\n");
+
+  if (process.env.BREVO_API_KEY) {
+    return sendViaBrevoApi({
+      to: getAdminAddress(),
+      replyTo: payload.email || getFromAddress(),
+      subject,
+      text,
+    });
+  }
 
   return getTransporter().sendMail({
     from: `"Vertex Solutions Website" <${getFromAddress()}>`,
@@ -102,6 +147,15 @@ export function sendNewsletterEmail(email) {
     "",
     "----------------------------------------",
   ].join("\n");
+
+  if (process.env.BREVO_API_KEY) {
+    return sendViaBrevoApi({
+      to: getAdminAddress(),
+      replyTo: email,
+      subject: "New Newsletter Subscription | Vertex Solutions",
+      text,
+    });
+  }
 
   return getTransporter().sendMail({
     from: `"Vertex Solutions Website" <${getFromAddress()}>`,
