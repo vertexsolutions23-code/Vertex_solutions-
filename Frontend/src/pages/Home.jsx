@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Vertex Solutions | Tax Advisory & Business Consulting, Jaipur"
-        description="Vertex Solutions, led by CA Abhishek Agarwal, is Jaipur's trusted partner for GST, income tax, company registration, startup India, ISO, trademark and government subsidy advisory."
+        title="Vertex Solutions | GST Registration, ISO, DSC & Tax Advisor in Jaipur"
+        description="Looking for GST Registration in Jaipur? Vertex Solutions provides GST Registration, DSC, ISO Certification, Trademark Registration, ITR Filing and Tax Advisory Services near you."
         path="/"
         jsonLd={[organizationLd(), websiteLd(), faqLd(homeFaqs)]}
       />
@@ -25,8 +25,8 @@ export default function Home() {
           <div className="hero-grid">
             <div className="sr in">
               <div className="eyebrow" style={{ color: "var(--gold-light)" }}>CA-Led Advisory &middot; Jaipur, Rajasthan</div>
-              <h1>Compliance made <em>effortless</em>. Growth made <em>possible</em>.</h1>
-              <p className="lead">Vertex Solutions is a Tax & Business Advisory and Consulting firm helping founders and enterprises across Jaipur navigate GST, income tax, company registration, and government subsidy schemes — with clarity, speed and complete transparency.</p>
+              <h1>Tax, GST & Business Advisory Services in Jaipur</h1>
+              <p className="lead">Vertex Solutions is a Tax & Business Advisory and Consulting firm in Jaipur providing GST Registration, Income Tax, Company Registration, ISO Certification, Trademark, DSC and Government Subsidy advisory services.</p>
               <div className="hero-actions">
                 <a className="btn btn-gold" href={GOOGLE_FORM_URL}>Get Free Consultation</a>
                 <Link className="btn btn-ghost-dark" to="/services">Explore Services</Link>

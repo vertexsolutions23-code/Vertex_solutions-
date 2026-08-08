@@ -37,7 +37,7 @@ export default function Contact() {
             <Reveal as="div" className="contact-info">
               <div className="info-card"><div className="ic"><PinIcon /></div><div><h4>Office Address</h4><p>{ADDRESS}</p></div></div>
               <div className="info-card"><div className="ic"><PhoneIcon /></div><div><h4>Call / WhatsApp</h4><p>{PHONE}</p></div></div>
-              <div className="info-card"><div className="ic"><MailIcon /></div><div><h4>Email</h4><p>info@vertexsolutions.in <span style={{ opacity: 0.6 }}>(placeholder)</span></p></div></div>
+              <div className="info-card"><div className="ic"><MailIcon /></div><div><h4>Email</h4><p>vertexsolutions23@gmail.com</p></div></div>
               <div className="info-card"><div className="ic"><ClockIcon /></div><div><h4>Working Hours</h4><p>Mon – Sat: 10:00 AM – 7:00 PM</p></div></div>
               <a className="btn btn-gold" href="#consultation-form" style={{ justifyContent: "center" }}>Open Consultation Form</a>
             </Reveal>

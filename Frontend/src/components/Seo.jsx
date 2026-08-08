@@ -18,18 +18,29 @@ export default function Seo({
   jsonLd = [],
   children,
 }) {
-  const url = `${DOMAIN}${path}`;
-  const fullTitle = noTitleSuffix || title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  const url =
+    cleanPath === "/"
+      ? `${DOMAIN}/`
+      : `${DOMAIN}${cleanPath.replace(/\/+$/, "")}`;
+
+  const fullTitle =
+    noTitleSuffix || title.includes(SITE.name)
+      ? title
+      : `${title} | ${SITE.name}`;
+
   const ogImage = absolute(image);
-  const robots = noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
+
+  const robots = noindex
+    ? "noindex, nofollow"
+    : "index, follow, max-image-preview:large";
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
+
       <meta name="description" content={description} />
       <meta name="robots" content={robots} />
-      <meta name="theme-color" content={SITE.themeColor} />
-      <meta name="referrer" content="no-referrer-when-downgrade" />
       <link rel="canonical" href={url} />
 
       <meta property="og:title" content={fullTitle} />

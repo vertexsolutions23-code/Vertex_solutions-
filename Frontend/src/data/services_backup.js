@@ -1,7 +1,7 @@
 export const services = {
   "tax-advisory": {
-    metaTitle: "Tax Consultant in Jaipur | Tax Advisory Services | Vertex Solutions",
-    metaDesc: "Looking for a Tax Consultant in Jaipur? Vertex Solutions provides Income Tax Filing, TDS, PAN/TAN, Accounting and Tax Advisory Services for individuals and businesses.",
+    metaTitle: "Tax Advisory Services | Vertex Solutions",
+    metaDesc: "Income tax filing, TDS, PAN/TAN and accounting services from Vertex Solutions, a Tax & Business Advisory and Consulting firm in Jaipur.",
     crumbLabel: "Tax Advisory",
     eyebrow: "Tax Advisory",
     title: "Income tax &amp; <em>accounting</em> advisory",
@@ -43,12 +43,12 @@ export const services = {
   },
 
   "gst-services": {
-    metaTitle: "GST Registration in Jaipur | GST Consultant | Vertex Solutions",
-    metaDesc: "Looking for GST Registration in Jaipur? Vertex Solutions provides GST Registration, GST Return Filing, GST Consultancy and Input Tax Credit support for businesses.",
+    metaTitle: "GST Services | GST Registration, Returns & Consultancy | Vertex Solutions",
+    metaDesc: "GST registration, return filing and consultancy services from Vertex Solutions in Jaipur — accurate, on-time and fully compliant.",
     crumbLabel: "GST Services",
     eyebrow: "GST Services",
-    title: "GST Registration in <em>Jaipur</em>",
-    lead: "Get professional GST Registration in Jaipur along with GST return filing, consultancy, input tax credit reconciliation and complete GST compliance support.",
+    title: "GST registration, returns &amp; <em>consultancy</em>",
+    lead: "From first-time GST registration to monthly return filing and applicability advisory, we manage your GST compliance end-to-end.",
     overview: [
       "GST compliance is one of the most frequent and detail-sensitive obligations for any business. Vertex Solutions manages the complete GST lifecycle — registration, return filing and consultancy — so you remain compliant without the administrative burden.",
       "Our team tracks due dates, reconciles input credit, and advises on GST applicability for new products, services or business structures.",
@@ -86,11 +86,11 @@ export const services = {
   },
 
   "company-registration": {
-    metaTitle: "Company Registration in Jaipur | Pvt Ltd, LLP & Partnership | Vertex Solutions",
-    metaDesc: "Vertex Solutions provides Company Registration in Jaipur including Private Limited Company, LLP, Partnership, MSME Registration and ROC Compliance services.",
+    metaTitle: "Company Registration | Pvt Ltd, LLP & Partnership | Vertex Solutions",
+    metaDesc: "Company incorporation, LLP registration, partnership formation, MSME registration and ROC compliance from Vertex Solutions, Jaipur.",
     crumbLabel: "Company Registration",
     eyebrow: "Company Registration",
-    title: "Company Registration in <em>Jaipur</em>",
+    title: "Start right with the correct <em>business structure</em>",
     lead: "From Private Limited and LLP incorporation to MSME registration and ongoing ROC compliance, we help you set up and maintain the right legal structure.",
     overview: [
       "Choosing and setting up the right business structure is one of the most consequential early decisions for any founder. Vertex Solutions guides you through incorporation options and manages the complete registration process with the Ministry of Corporate Affairs.",
@@ -129,11 +129,11 @@ export const services = {
   },
 
   "startup-india": {
-    metaTitle: "Startup India Registration in Jaipur | DPIIT Recognition | Vertex Solutions",
-    metaDesc: "Get Startup India Registration and DPIIT Recognition support in Jaipur from Vertex Solutions, including eligibility assessment, documentation and application guidance.",
+    metaTitle: "Startup India Registration | DPIIT Recognition | Vertex Solutions",
+    metaDesc: "Startup India (DPIIT) recognition and funding-readiness advisory for early-stage founders, by Vertex Solutions Jaipur.",
     crumbLabel: "Startup India",
     eyebrow: "Startup India",
-    title: "Startup India Registration in <em>Jaipur</em>",
+    title: "Startup India recognition, done <em>right</em>",
     lead: "From DPIIT recognition to structuring for future funding rounds, we help early-stage founders build a compliant, investor-ready foundation.",
     overview: [
       "The Startup India initiative offers recognised startups tax benefits, easier compliance and access to government schemes — but the recognition process requires precise documentation and eligibility alignment.",
@@ -170,11 +170,11 @@ export const services = {
   },
 
   "trademark-registration": {
-    metaTitle: "Trademark Registration in Jaipur | Trademark Consultant | Vertex Solutions",
-    metaDesc: "Get Trademark Registration in Jaipur with Vertex Solutions. We provide trademark search, class selection, application filing, tracking and objection support.",
+    metaTitle: "Trademark Registration | Vertex Solutions",
+    metaDesc: "Trademark search, filing and tracking services from Vertex Solutions, protecting your brand name and logo in Jaipur and across India.",
     crumbLabel: "Trademark Registration",
     eyebrow: "Intellectual Property",
-    title: "Trademark Registration in <em>Jaipur</em>",
+    title: "Protect your <em>brand identity</em>",
     lead: "From trademark search to filing and status tracking, we help you secure legal protection for your business name, logo and tagline.",
     overview: [
       "Your brand name and logo are among your most valuable business assets. Vertex Solutions manages the trademark registration process — from availability search to filing and monitoring — to help you secure exclusive rights.",
@@ -210,11 +210,11 @@ export const services = {
   },
 
   "iso-certification": {
-    metaTitle: "ISO Certification in Jaipur | ISO Consultant | Vertex Solutions",
-    metaDesc: "Get ISO Certification in Jaipur with Vertex Solutions. Guidance for ISO 9001, ISO 14001, ISO 13485, ISO 27001, ISO 22000 and ISO 50001.",
+    metaTitle: "ISO Certification Services | Vertex Solutions",
+    metaDesc: "ISO certification guidance for quality and process standards, helping businesses in Jaipur build credibility and operational consistency.",
     crumbLabel: "ISO Certification",
     eyebrow: "Quality Standards",
-    title: "ISO Certification in <em>Jaipur</em>",
+    title: "Build credibility with <em>ISO certification</em>",
     lead: "We guide businesses through the ISO certification process to demonstrate quality, consistency and process maturity to clients and partners.",
     overview: [
       "ISO certification signals to clients, partners and regulators that your business follows recognised quality and process standards. Vertex Solutions guides you through selecting the right ISO standard and preparing for certification.",
@@ -257,11 +257,11 @@ export const services = {
   },
 
   "digital-signature-certificate": {
-    metaTitle: "DSC Registration in Jaipur | Digital Signature Certificate | Vertex Solutions",
-    metaDesc: "Get DSC Registration in Jaipur from Vertex Solutions. We provide Class 3 Digital Signature Certificates for directors, partners, professionals and organisations.",
+    metaTitle: "Digital Signature Certificate (DSC) | Vertex Solutions",
+    metaDesc: "Class 3 Digital Signature Certificate issuance for individuals, directors and organisations, by Vertex Solutions Jaipur.",
     crumbLabel: "Digital Signature Certificate",
     eyebrow: "Digital Compliance",
-    title: "DSC Registration in <em>Jaipur</em>",
+    title: "Class 3 <em>Digital Signature Certificate</em>",
     lead: "DSC issuance for company filings, GST returns, tenders and other statutory digital submissions — processed quickly and correctly.",
     overview: [
       "A Digital Signature Certificate (DSC) is required for a range of statutory filings, including company incorporation, ROC returns, GST filings and government tenders. Vertex Solutions handles the application and issuance process for individuals and organisations.",
@@ -295,11 +295,11 @@ export const services = {
   },
 
   "government-subsidy": {
-    metaTitle: "Government Subsidy Consultant in Jaipur | Loan & Subsidy Assistance | Vertex Solutions",
-    metaDesc: "Vertex Solutions helps businesses in Jaipur identify eligible Government Subsidy and subsidy-linked loan schemes, prepare applications and manage documentation.",
+    metaTitle: "Government Subsidy & Loan Assistance | Vertex Solutions",
+    metaDesc: "Government subsidy scheme mapping and subsidy-linked loan assistance for businesses in Jaipur, by Vertex Solutions.",
     crumbLabel: "Government Subsidy",
     eyebrow: "Government Schemes",
-    title: "Government Subsidy Consultant in <em>Jaipur</em>",
+    title: "Unlock <em>subsidy</em> &amp; loan schemes built for your business",
     lead: "We assess eligibility across central and state subsidy schemes, prepare applications, and coordinate with lending institutions — so you access support you may not know you qualify for.",
     overview: [
       "Many businesses remain unaware of the government subsidy and loan schemes they qualify for. Vertex Solutions reviews your business profile, sector and location to identify relevant central and state schemes, then manages the application process end-to-end.",
@@ -336,11 +336,11 @@ export const services = {
   },
 
   "business-advisory": {
-    metaTitle: "Business Advisory Services in Jaipur | Business Consultant | Vertex Solutions",
-    metaDesc: "Vertex Solutions provides Business Advisory and Business Consulting Services in Jaipur covering business structuring, financial planning, growth strategy and compliance reviews.",
+    metaTitle: "Business Advisory Services | Vertex Solutions",
+    metaDesc: "Business structuring, planning and growth advisory services from Vertex Solutions, a Tax & Business Advisory and Consulting firm in Jaipur.",
     crumbLabel: "Business Advisory",
     eyebrow: "Advisory",
-    title: "Business Advisory Services in <em>Jaipur</em>",
+    title: "Advisory for <em>structured, sustainable growth</em>",
     lead: "Beyond compliance, we work with business owners on structuring, financial planning and operational decisions that support long-term growth.",
     overview: [
       "Compliance is only one part of running a successful business. Vertex Solutions also works with founders and business owners on broader advisory — from entity structuring to financial planning — grounded in practical, professional-grade tax and advisory insight.",
