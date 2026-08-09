@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { sendConsultationEmail } from "../mailer.js";
+import { appendLeadToSheet } from "../sheets.js";
 
 const CONSULTATION_OPTIONS = [
   "GST Registration",
@@ -63,7 +64,20 @@ router.post("/consultation", async (req, res) => {
       return res.status(400).json({ success: false, errors });
     }
 
-    await sendConsultationEmail(clean);
+    const [emailResult, sheetResult] = await Promise.allSettled([
+      sendConsultationEmail(clean),
+      appendLeadToSheet(clean),
+    ]);
+
+    if (sheetResult.status === "rejected") {
+      console.error("Google Sheets append error:", sheetResult.reason);
+    }
+
+    // Email is the critical path — a Google Sheets failure is logged but
+    // must never stop the email from being sent or fail the request.
+    if (emailResult.status === "rejected") {
+      throw emailResult.reason;
+    }
 
     return res.status(200).json({
       success: true,
