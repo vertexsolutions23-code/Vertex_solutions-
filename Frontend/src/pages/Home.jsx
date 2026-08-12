@@ -8,7 +8,7 @@ import { SealIcon, CheckIcon, PinIcon, PhoneIcon, ClockIcon } from "../component
 import { ServiceCard, SectionHead, ProcessTimeline, CtaBanner } from "../components/PageBits.jsx";
 import { GOOGLE_FORM_URL, ADDRESS, PHONE } from "../data/constants.js";
 import { homeServices, industries, testimonials, homeFaqs, processSteps } from "../data/homeData.js";
-import { organizationLd, websiteLd, faqLd } from "../data/seo.js";
+import { faqLd } from "../data/seo.js";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
         title="Vertex Solutions | GST Registration, ISO, DSC & Tax Advisor in Jaipur"
         description="Looking for GST Registration in Jaipur? Vertex Solutions provides GST Registration, DSC, ISO Certification, Trademark Registration, ITR Filing and Tax Advisory Services near you."
         path="/"
-        jsonLd={[organizationLd(), websiteLd(), faqLd(homeFaqs)]}
+        jsonLd={[faqLd(homeFaqs)]}
       />
       <section className="hero" id="top">
         <div className="hero-glow"></div>
@@ -26,7 +26,7 @@ export default function Home() {
             <div className="sr in">
               <div className="eyebrow" style={{ color: "var(--gold-light)" }}>CA-Led Advisory &middot; Jaipur, Rajasthan</div>
               <h1>Tax, GST & Business Advisory Services in Jaipur</h1>
-              <p className="lead">Vertex Solutions is a Tax & Business Advisory and Consulting firm in Jaipur providing GST Registration, Income Tax, Company Registration, ISO Certification, Trademark, DSC and Government Subsidy advisory services.</p>
+              <p className="lead">Vertex Solutions is a Tax & Business Advisory and Consulting firm in Jaipur providing tax, GST, company registration, ISO, trademark, DSC, government subsidy, financing and investment &amp; insurance advisory services.</p>
               <div className="hero-actions">
                 <a className="btn btn-gold" href={GOOGLE_FORM_URL}>Get Free Consultation</a>
                 <Link className="btn btn-ghost-dark" to="/services">Explore Services</Link>
@@ -50,7 +50,7 @@ export default function Home() {
               <div className="divider"></div>
               <div className="founder">
                 <FounderAvatar />
-                <div><div className="founder-name">CA Abhishek Agarwal</div><div className="founder-role">Founder, Vertex Solutions</div></div>
+                <div><div className="founder-name">Mr. Abhishek Agarwal</div><div className="founder-role">Founder, Vertex Solutions</div></div>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function Home() {
       <div className="trust-strip">
         <div className="marquee-track">
           {[...Array(2)].flatMap((_, k) =>
-            ["Income Tax", "GST Advisory", "Company Incorporation", "Startup India", "Trademark", "ISO Certification", "MSME Registration", "Government Subsidy"].map((t, i) => (
+            ["Income Tax", "GST Advisory", "Company Incorporation", "Startup Registration", "Trademark", "ISO Certification", "MSME Registration", "Government Subsidy", "Investment & Insurance"].map((t, i) => (
               <span key={`${k}-${i}`}>{t}</span>
             ))
           )}
@@ -74,13 +74,13 @@ export default function Home() {
               <FounderAvatar className="about-img" />
               <div className="quote">
                 <p>&ldquo;Every filing deadline met, every scheme explored — that is the standard we hold ourselves to.&rdquo;</p>
-                <div className="who">CA Abhishek Agarwal, Founder</div>
+                <div className="who">Mr. Abhishek Agarwal, Founder</div>
               </div>
             </Reveal>
             <Reveal>
               <div className="eyebrow">About Vertex Solutions</div>
               <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", marginBottom: 18 }}>A Tax & Business Advisory and Consulting firm, built for the modern business owner</h2>
-              <p style={{ color: "var(--mist)", fontSize: 15.5, marginBottom: 16 }}>Vertex Solutions was founded to close the gap between complex regulatory requirements and the everyday realities of running a business. Under the leadership of CA Abhishek Agarwal, our team works with startups, MSMEs and established enterprises across Jaipur to manage taxation, statutory compliance, registrations and access to government schemes.</p>
+              <p style={{ color: "var(--mist)", fontSize: 15.5, marginBottom: 16 }}>Vertex Solutions was founded to close the gap between complex regulatory requirements and the everyday realities of running a business. Under the leadership of Mr. Abhishek Agarwal, our team works with startups, MSMEs and established enterprises across Jaipur to manage taxation, statutory compliance, registrations and access to government schemes.</p>
               <p style={{ color: "var(--mist)", fontSize: 15.5, marginBottom: 16 }}>We believe advisory should be proactive, not reactive — which is why every engagement begins with a clear roadmap, transparent pricing and a dedicated point of contact who understands your business.</p>
               <Link className="btn btn-dark" to="/about">More About Us</Link>
               <div className="why-list">
@@ -142,10 +142,10 @@ export default function Home() {
             <Link className="btn btn-gold" to="/government-subsidy">Check Subsidy Eligibility</Link>
           </Reveal>
           <Reveal as="div" className="band-panel light">
-            <span className="tag-chip">Startup India</span>
-            <h3>Startup India recognition, done right</h3>
+            <span className="tag-chip">Startup Registration</span>
+            <h3>Startup Registration</h3>
             <p>From DPIIT recognition to structuring for future funding rounds, we help early-stage founders build a compliant, investor-ready foundation from day one.</p>
-            <Link className="btn btn-dark" to="/startup-india">Register Under Startup India</Link>
+            <Link className="btn btn-dark" to="/startup-india">Register Your Startup</Link>
           </Reveal>
         </div>
       </section>
@@ -153,17 +153,21 @@ export default function Home() {
       <section>
         <div className="container">
           <SectionHead eyebrow="Client Experience" title="Trusted by founders and businesses across Jaipur" center />
-          <Reveal as="div" className="test-grid">
-            {testimonials.map(([q, n, r, ini]) => (
-              <div className="test-card" key={n}>
-                <div className="stars">★★★★★</div>
-                <p>&ldquo;{q}&rdquo;</p>
-                <div className="test-who">
-                  <div className="test-avatar">{ini}</div>
-                  <div><div className="test-name">{n}</div><div className="test-role">{r}</div></div>
-                </div>
-              </div>
-            ))}
+          <Reveal as="div" className="test-marquee">
+            <div className="test-marquee-track">
+              {[...Array(2)].flatMap((_, k) =>
+                testimonials.map(([q, n, r, ini]) => (
+                  <div className="test-card" key={`${k}-${n}-${q}`} aria-hidden={k === 1}>
+                    <div className="stars">★★★★★</div>
+                    <p>&ldquo;{q}&rdquo;</p>
+                    <div className="test-who">
+                      <div className="test-avatar">{ini}</div>
+                      <div><div className="test-name">{n}</div><div className="test-role">{r}</div></div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
           </Reveal>
         </div>
       </section>

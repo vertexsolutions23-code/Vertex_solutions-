@@ -8,7 +8,7 @@ export default function About() {
     <>
       <Seo
         title="About Us | Vertex Solutions"
-        description="Learn about Vertex Solutions, a Tax & Business Advisory and Consulting firm founded by CA Abhishek Agarwal in Jaipur."
+        description="Learn about Vertex Solutions, a Tax & Business Advisory and Consulting firm founded by Mr. Abhishek Agarwal in Jaipur."
         path="/about"
       />
       <PageHero
@@ -24,13 +24,13 @@ export default function About() {
               <FounderAvatar className="about-img" />
               <div className="quote">
                 <p>&ldquo;We measure success by how little our clients have to worry about compliance.&rdquo;</p>
-                <div className="who">CA Abhishek Agarwal, Founder</div>
+                <div className="who">Mr. Abhishek Agarwal, Founder</div>
               </div>
             </Reveal>
             <Reveal>
               <div className="eyebrow">Our Story</div>
               <h2 style={{ fontSize: "1.9rem", marginBottom: 16 }}>Built on expert advisory, run with a founder's mindset</h2>
-              <p style={{ color: "var(--mist)", fontSize: 15, marginBottom: 14 }}>Vertex Solutions was established by CA Abhishek Agarwal to give businesses in Jaipur access to the same calibre of tax and compliance advisory typically reserved for large enterprises — delivered with the responsiveness of a boutique firm.</p>
+              <p style={{ color: "var(--mist)", fontSize: 15, marginBottom: 14 }}>Vertex Solutions was established by Mr. Abhishek Agarwal to give businesses in Jaipur access to the same calibre of tax and compliance advisory typically reserved for large enterprises — delivered with the responsiveness of a boutique firm.</p>
               <p style={{ color: "var(--mist)", fontSize: 15, marginBottom: 14 }}>Today, the firm supports founders, MSMEs and established companies across income tax, GST, company registration, ISO and trademark filings, and government subsidy schemes, with every engagement personally reviewed for accuracy and compliance.</p>
               <p style={{ color: "var(--mist)", fontSize: 15 }}>Our approach is simple: understand the business first, then build a compliance and growth roadmap around it — not the other way around.</p>
               <div className="why-list">
@@ -58,12 +58,25 @@ export default function About() {
 
       <section>
         <div className="container">
-          <SectionHead eyebrow="Leadership" title="Led by Seasoned Tax & Business Advisors" />
+          <SectionHead eyebrow="Our Team" title="The people behind your compliance &amp; growth" />
           <Reveal as="div" className="grid-3">
-            <div className="feat-card">
-              <FounderAvatar style={{ width: 52, height: 52, fontSize: 18, marginBottom: 16 }} />
-              <h4 style={{ fontSize: 16 }}>CA Abhishek Agarwal</h4>
-              <p style={{ marginTop: 6 }}>Founder, Vertex Solutions. Leads the firm's tax advisory, compliance and government subsidy consulting practice.</p>
+            <div className="team-card">
+              <FounderAvatar className="team-photo" alt="Mr. Abhishek Agarwal" />
+              <h4>Mr. Abhishek Agarwal</h4>
+              <div className="team-role">Founder, Vertex Solutions</div>
+              <p>Founder leading the firm&rsquo;s tax, GST and government subsidy consulting practice — setting the advisory standards, reviewing every engagement and building long-term compliance roadmaps for clients.</p>
+            </div>
+            <div className="team-card">
+              <img className="team-photo" src="/AadeshJainCA.jpeg" alt="CA Aadesh Jain" />
+              <h4>CA Aadesh Jain</h4>
+              <div className="team-role">Chartered Accountant</div>
+              <p>Handles income tax filings and planning, GST returns and compliance, statutory &amp; tax audits, TDS, bookkeeping and financial advisory for businesses across every stage.</p>
+            </div>
+            <div className="team-card">
+              <img className="team-photo" src="/Adv.GovindAgarwal.jpeg" alt="Adv. Govind Agarwal" />
+              <h4>Adv. Govind Agarwal</h4>
+              <div className="team-role">Advocate &amp; Legal Advisor</div>
+              <p>Handles GST registration and compliance matters along with trademark registration and protection for businesses.</p>
             </div>
           </Reveal>
         </div>

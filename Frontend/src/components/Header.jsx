@@ -3,15 +3,25 @@ import { Link, NavLink } from "react-router-dom";
 import { GOOGLE_FORM_URL, PHONE_TEL } from "../data/constants.js";
 
 const MEGA_ITEMS = [
-  ["/tax-advisory", "Tax Advisory", "Income tax, TDS, PAN/TAN & accounting"],
+  ["/income-tax", "Income Tax", "ITR filing, notices & hearing support"],
+  ["/tax-advisory", "Tax Advisory", "Tax planning, TDS & PAN/TAN compliance"],
+  ["/accounting", "Accounting", "Bookkeeping, statements & audit support"],
   ["/gst-services", "GST Services", "Registration, returns & consultancy"],
   ["/company-registration", "Company Registration", "Pvt Ltd, LLP, Partnership, MSME, ROC"],
-  ["/startup-india", "Startup India", "DPIIT recognition & funding readiness"],
+  ["/startup-india", "Startup Registration", "DPIIT recognition & funding readiness"],
   ["/trademark-registration", "Trademark Registration", "Brand & IP protection"],
   ["/iso-certification", "ISO Certification", "Quality & process standards"],
   ["/digital-signature-certificate", "Digital Signature (DSC)", "Class 3 DSC issuance"],
   ["/government-subsidy", "Government Subsidy", "Scheme mapping & loan assistance"],
   ["/business-advisory", "Business Advisory", "Structuring & growth planning"],
+  ["/project-report-financing", "Project Report & Financing", "Loan reports, CMA data & financing"],
+  ["/corporate-financing", "Corporate Financing", "Debt structuring & lender coordination"],
+  ["/investment-insurance", "Investment & Insurance", "SIP, term & medical insurance advisory"],
+];
+
+const CALC_ITEMS = [
+  ["/calculators/emi", "EMI Calculator", "Loan EMI, interest & total payable"],
+  ["/calculators/tax", "Advanced Tax Calculator", "Income tax estimate — old vs new regime"],
 ];
 
 export default function Header() {
@@ -48,7 +58,7 @@ export default function Header() {
               <li><NavLink to="/about">About</NavLink></li>
               <li className="has-mega">
                 <NavLink to="/services">Services ▾</NavLink>
-                <div className="mega">
+                <div className="mega services">
                   {MEGA_ITEMS.map(([href, title, desc]) => (
                     <Link key={href} to={href}>
                       <span className="t">{title}</span>
@@ -57,9 +67,20 @@ export default function Header() {
                   ))}
                 </div>
               </li>
-              <li><NavLink to="/government-subsidy">Subsidy</NavLink></li>
+              <li><NavLink to="/digital-signature-certificate">DSC</NavLink></li>
+              <li><NavLink to="/iso-certification">ISO</NavLink></li>
+              <li className="has-mega">
+                <span className="nav-trigger">Calculators ▾</span>
+                <div className="mega compact">
+                  {CALC_ITEMS.map(([href, title, desc]) => (
+                    <Link key={href} to={href} onClick={close}>
+                      <span className="t">{title}</span>
+                      <span className="d">{desc}</span>
+                    </Link>
+                  ))}
+                </div>
+              </li>
               <li><NavLink to="/blogs">Blogs</NavLink></li>
-              <li><NavLink to="/faqs">FAQs</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
           </nav>
@@ -91,9 +112,22 @@ export default function Header() {
                 ))}
               </ul>
             </li>
-            <li><NavLink to="/government-subsidy" onClick={close}>Subsidy</NavLink></li>
+            <li><NavLink to="/digital-signature-certificate" onClick={close}>DSC</NavLink></li>
+            <li><NavLink to="/iso-certification" onClick={close}>ISO</NavLink></li>
+            <li className="m-sub">
+              <span>Calculators</span>
+              <ul>
+                {CALC_ITEMS.map(([href, title, desc]) => (
+                  <li key={href}>
+                    <Link to={href} onClick={close}>
+                      <span className="t">{title}</span>
+                      <span className="d">{desc}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
             <li><NavLink to="/blogs" onClick={close}>Blogs</NavLink></li>
-            <li><NavLink to="/faqs" onClick={close}>FAQs</NavLink></li>
             <li><NavLink to="/contact" onClick={close}>Contact</NavLink></li>
           </ul>
           <div className="mobile-menu-cta">

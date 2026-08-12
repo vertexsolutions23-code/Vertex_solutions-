@@ -8,12 +8,13 @@ const CONSULTATION_OPTIONS = [
   "GST Return",
   "Income Tax",
   "Company Incorporation",
-  "Startup India Registration",
+  "Startup Registration",
   "Trademark Registration",
   "ISO Certification",
   "Digital Signature Certificate (DSC)",
   "Business Advisory",
   "Subsidy & Government Loans",
+  "Investment & Insurance Advisory",
   "Other",
 ];
 

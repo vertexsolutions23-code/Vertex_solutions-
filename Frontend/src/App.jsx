@@ -5,6 +5,8 @@ import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
 import ServiceDetail from "./pages/ServiceDetail.jsx";
 import Blogs from "./pages/Blogs.jsx";
+import EMICalculator from "./pages/EMICalculator.jsx";
+import TaxCalculator from "./pages/TaxCalculator.jsx";
 import Faqs from "./pages/Faqs.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
@@ -24,6 +26,8 @@ export default function App() {
           <Route key={slug} path={`/${slug}`} element={<ServiceDetail slug={slug} />} />
         ))}
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/calculators/emi" element={<EMICalculator />} />
+        <Route path="/calculators/tax" element={<TaxCalculator />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<Privacy />} />

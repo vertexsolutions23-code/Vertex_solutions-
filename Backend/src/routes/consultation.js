@@ -1,4 +1,5 @@
 import { Router } from "express";
+import rateLimit from "express-rate-limit";
 import { sendConsultationEmail } from "../mailer.js";
 import { appendLeadToSheet } from "../sheets.js";
 
@@ -7,26 +8,40 @@ const CONSULTATION_OPTIONS = [
   "GST Return",
   "Income Tax",
   "Company Incorporation",
-  "Startup India Registration",
+  "Startup Registration",
   "Trademark Registration",
   "ISO Certification",
   "Digital Signature Certificate (DSC)",
   "Business Advisory",
   "Subsidy & Government Loans",
+  "Investment & Insurance Advisory",
   "Other",
 ];
 
 const router = Router();
 
+const submitLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: "Too many requests. Please try again later." },
+});
+
+function asString(value, max) {
+  const str = typeof value === "string" ? value : "";
+  return str.trim().slice(0, max);
+}
+
 function validate(payload) {
   const errors = {};
 
-  const fullName = String(payload.fullName ?? "").trim();
-  const mobile = String(payload.mobile ?? "").trim();
-  const businessName = String(payload.businessName ?? "").trim();
-  const email = String(payload.email ?? "").trim();
-  const consultation = String(payload.consultation ?? "").trim();
-  const message = String(payload.message ?? "").trim();
+  const fullName = asString(payload?.fullName, 120);
+  const mobile = asString(payload?.mobile, 20);
+  const businessName = asString(payload?.businessName, 200);
+  const email = asString(payload?.email, 254);
+  const consultation = asString(payload?.consultation, 60);
+  const message = asString(payload?.message, 2000);
 
   if (!fullName) errors.fullName = "Full name is required";
   else if (fullName.length > 120) errors.fullName = "Full name must be under 120 characters";
@@ -42,7 +57,7 @@ function validate(payload) {
   if (!businessName) errors.businessName = "Business name is required";
   else if (businessName.length > 200) errors.businessName = "Business name must be under 200 characters";
 
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+  if (email && (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))) {
     errors.email = "Enter a valid email address";
   }
 
@@ -53,10 +68,10 @@ function validate(payload) {
 
   if (message.length > 2000) errors.message = "Message must be under 2000 characters";
 
-  return { errors, clean: { fullName, mobile, businessName, email, consultation, message } };
+  return { errors, clean: { fullName, mobile: mobile.replace(/\D/g, "").slice(0, 13), businessName, email, consultation, message } };
 }
 
-router.post("/consultation", async (req, res) => {
+router.post("/consultation", submitLimiter, async (req, res) => {
   try {
     const { errors, clean } = validate(req.body || {});
 
@@ -70,7 +85,7 @@ router.post("/consultation", async (req, res) => {
     ]);
 
     if (sheetResult.status === "rejected") {
-      console.error("Google Sheets append error:", sheetResult.reason);
+      console.error("Google Sheets append error:", sheetResult.reason?.message || sheetResult.reason);
     }
 
     // Email is the critical path — a Google Sheets failure is logged but
@@ -84,7 +99,7 @@ router.post("/consultation", async (req, res) => {
       message: "Request received. Our advisor will contact you shortly.",
     });
   } catch (err) {
-    console.error("Consultation email error:", err);
+    console.error("Consultation email error:", err?.message || err);
     return res
       .status(500)
       .json({ success: false, message: "Something went wrong. Please try again later." });

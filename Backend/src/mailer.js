@@ -89,6 +89,13 @@ async function sendViaBrevoApi({ to, replyTo, subject, text }) {
   }
 }
 
+// Defense in depth: even if a caller skips route-level validation, user input
+// must never reach email headers raw (header-injection guard).
+function safeReplyTo(email) {
+  const value = String(email ?? "").trim().replace(/[\r\n]+/g, "").slice(0, 254);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) ? value : getFromAddress();
+}
+
 export function sendConsultationEmail(payload) {
   const subject = "New Free Consultation Request | Vertex Solutions";
   const submittedAt = new Date().toLocaleString("en-IN", {
@@ -115,7 +122,7 @@ export function sendConsultationEmail(payload) {
   if (process.env.BREVO_API_KEY) {
     return sendViaBrevoApi({
       to: getAdminAddress(),
-      replyTo: payload.email || getFromAddress(),
+      replyTo: safeReplyTo(payload.email),
       subject,
       text,
     });
@@ -124,7 +131,7 @@ export function sendConsultationEmail(payload) {
   return getTransporter().sendMail({
     from: `"Vertex Solutions Website" <${getFromAddress()}>`,
     to: getAdminAddress(),
-    replyTo: payload.email || getFromAddress(),
+    replyTo: safeReplyTo(payload.email),
     subject,
     text,
   });
@@ -151,7 +158,7 @@ export function sendNewsletterEmail(email) {
   if (process.env.BREVO_API_KEY) {
     return sendViaBrevoApi({
       to: getAdminAddress(),
-      replyTo: email,
+      replyTo: safeReplyTo(email),
       subject: "New Newsletter Subscription | Vertex Solutions",
       text,
     });
@@ -160,7 +167,7 @@ export function sendNewsletterEmail(email) {
   return getTransporter().sendMail({
     from: `"Vertex Solutions Website" <${getFromAddress()}>`,
     to: getAdminAddress(),
-    replyTo: email,
+    replyTo: safeReplyTo(email),
     subject: "New Newsletter Subscription | Vertex Solutions",
     text,
   });

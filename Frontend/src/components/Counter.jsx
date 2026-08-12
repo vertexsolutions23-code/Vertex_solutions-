@@ -2,19 +2,24 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Counter({ target, suffix = "", label }) {
   const ref = useRef(null);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const started = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setValue(target);
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting && !started.current) {
             started.current = true;
-            const step = Math.max(1, Math.round(target / 50));
-            let cur = 0;
+            const steps = 50;
+            const step = Math.max(1, Math.round(target / steps));
+            let cur = 1;
             const iv = setInterval(() => {
               cur += step;
               if (cur >= target) {
@@ -22,12 +27,12 @@ export default function Counter({ target, suffix = "", label }) {
                 clearInterval(iv);
               }
               setValue(cur);
-            }, 22);
+            }, 20);
             io.unobserve(el);
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
     io.observe(el);
     return () => io.disconnect();

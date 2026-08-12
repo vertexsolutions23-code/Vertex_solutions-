@@ -62,16 +62,24 @@ function getAuth() {
   return auth;
 }
 
+// Google Sheets treats values starting with =, +, -, @ (or with leading
+// tabs/CR) as formulas. Strip those prefixes so attacker input can never
+// execute formulas like =IMPORTRANGE or =HYPERLINK inside the sheet.
+function sanitizeCell(value) {
+  const str = String(value ?? "");
+  return str.replace(/^[=+\-@\t\r]+/, "").slice(0, 2000);
+}
+
 export async function appendLeadToSheet(payload) {
   const now = new Date();
 
   const row = [
-    payload.fullName ?? "",
-    payload.email ?? "",
-    payload.mobile ?? "",
-    payload.businessName ?? "",
-    payload.consultation ?? "",
-    payload.message ?? "",
+    sanitizeCell(payload.fullName),
+    sanitizeCell(payload.email),
+    sanitizeCell(payload.mobile),
+    sanitizeCell(payload.businessName),
+    sanitizeCell(payload.consultation),
+    sanitizeCell(payload.message),
     now.toLocaleDateString("en-IN"),
     now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }),
   ];

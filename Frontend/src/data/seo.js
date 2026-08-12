@@ -3,7 +3,7 @@ export const SITE = {
 
   url: "https://www.rajasthanservices.com",
 
-  locale: "en-IN",
+  locale: "en_IN",
 
   themeColor: "#0a0b0d",
 
@@ -23,10 +23,10 @@ export const SITE = {
     lng: 75.7871,
   },
 
-  founder: "CA Abhishek Agarwal",
+  founder: "Mr. Abhishek Agarwal",
 
   description:
-    "Vertex Solutions provides GST Registration, GST Consultancy, Income Tax, Company Registration, ISO Certification, Trademark Registration, DSC and Business Advisory Services in Jaipur, Rajasthan.",
+    "Vertex Solutions provides GST Registration, GST Consultancy, Income Tax, Company Registration, ISO Certification, Trademark Registration, DSC, Government Subsidy, Financing, Business Advisory and Investment & Insurance Advisory Services in Jaipur, Rajasthan.",
 };
 
 const BASE = SITE.url.replace(/\/+$/, "");
@@ -132,8 +132,10 @@ function orgNode() {
       "ISO Certification",
       "DSC Registration",
       "Trademark Registration",
-      "Startup India Advisory",
+      "Startup Registration",
       "Government Subsidy Advisory",
+      "Corporate Financing",
+      "Investment & Insurance Advisory",
     ],
 
     sameAs: [],

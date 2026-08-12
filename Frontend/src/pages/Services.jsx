@@ -10,7 +10,7 @@ export default function Services() {
     <>
       <Seo
         title="Our Services | Vertex Solutions"
-        description="Explore Vertex Solutions' complete range of tax, GST, company registration, startup, trademark, ISO and government subsidy advisory services."
+        description="Explore Vertex Solutions' complete range of tax, GST, company registration, startup, trademark, ISO, government subsidy, financing, business and investment advisory services."
         path="/services"
         jsonLd={[itemListLd(serviceItems)]}
       />

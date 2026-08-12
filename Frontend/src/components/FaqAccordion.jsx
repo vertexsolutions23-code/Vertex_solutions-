@@ -8,7 +8,7 @@ function FaqItem({ q, a, open, onToggle }) {
         <span>{q}</span>
         <span className="plus"><PlusIcon /></span>
       </button>
-      <div className="faq-a" style={{ maxHeight: open ? "500px" : 0 }}>
+      <div className="faq-a" style={{ maxHeight: open ? "2000px" : 0 }}>
         <p>{a}</p>
       </div>
     </div>
@@ -31,6 +31,7 @@ export default function FaqAccordion({ faqs, withSearch = false, categories = nu
           <SearchIcon />
           <input
             type="text"
+            aria-label="Search FAQs"
             placeholder="Search a question — e.g. GST, incorporation, subsidy..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}

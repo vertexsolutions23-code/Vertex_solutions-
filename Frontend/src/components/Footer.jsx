@@ -52,11 +52,12 @@ export default function Footer() {
           <div className="footer-col">
             <h5>Services</h5>
             <ul>
-              <li><Link to="/tax-advisory">Tax Advisory</Link></li>
+              <li><Link to="/income-tax">Income Tax</Link></li>
               <li><Link to="/gst-services">GST Services</Link></li>
               <li><Link to="/company-registration">Company Registration</Link></li>
-              <li><Link to="/startup-india">Startup India</Link></li>
               <li><Link to="/trademark-registration">Trademark Registration</Link></li>
+              <li><Link to="/digital-signature-certificate">Digital Signature Certificate (DSC)</Link></li>
+              <li><Link to="/iso-certification">ISO Certification</Link></li>
             </ul>
           </div>
 
@@ -66,7 +67,7 @@ export default function Footer() {
               Compliance deadlines &amp; scheme updates, occasionally.
             </p>
             <form className="newsletter" onSubmit={handleSubscribe} noValidate>
-              <input type="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); setError(""); }} required />
+              <input type="email" placeholder="Your email" aria-label="Email address" value={email} onChange={(e) => { setEmail(e.target.value); setError(""); }} required />
               <button type="submit">Join</button>
             </form>
             {error && (
